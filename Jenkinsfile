@@ -4,9 +4,9 @@
     
 
 node {
-    parameters{
-        choice ( name: 'CHOICE' , choices: [ 'master' , 'something' ], description:'select your branch')
-    }
+    // parameters{
+    //     choice ( name: 'CHOICE' , choices: [ 'master' , 'something' ], description:'select your branch')
+    // }
 
     stage('checkout')
     {
