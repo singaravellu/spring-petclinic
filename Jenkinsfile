@@ -2,7 +2,7 @@
 
 properties([
     parameters([
-        choice (name:'branches',choice:['master','something'],description:'select your branch')
+        choice (name:'branches',choices:['master','something'],description:'select your branch')
     ])
 ])
 
@@ -11,7 +11,7 @@ node {
     {
                git branch:"${params.branches}" ,url:'https://github.com/singaravellu/spring-petclinic.git'
 
-               echo "$params.BRANCH"
+               echo "$params.branches"
         }
    
 }
