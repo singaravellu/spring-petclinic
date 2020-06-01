@@ -1,16 +1,10 @@
-pipeline{
-    agent { label 'redhat' }
-    stages{
-        stage('scm'){
-            steps {
-                    git 'https://github.com/dummyrepos/spring-petclinic.git'
-            }
+node {
+    parameters{ 
+        string(name:'Branch',defaultValue:'master',description:'please select the branch you want') 
+    }
+    stage('checkout'){
+               git branch:${parameters.Branch} url:'https://github.com/singaravellu/spring-petclinic.git'       
         }
-        stage('Package'){
-            steps {
-                sh 'mvn package'
-            }
-        }
-
+   
     }
 }
