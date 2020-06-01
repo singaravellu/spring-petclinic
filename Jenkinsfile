@@ -1,23 +1,15 @@
+#!/usr/bin/groovy
 
 properties([
     parameters([
-        gitParameter(branch: '',
-                     branchFilter: 'origin/(.*)',
-                     defaultValue: 'master',
-                     description: 'please select which branch you want to build',
-                     name: 'BRANCH',
-                     quickFilterEnabled: false,
-                     selectedValue: 'NONE',
-                     sortMode: 'NONE',
-                     tagFilter: '*',
-                     type: 'PT_BRANCH')
+        choice (name:'branches',choice:['master','something'],description:'select your branch')
     ])
 ])
 
 node {
     stage('checkout')
     {
-               git branch:"${params.BRANCH}" ,url:'https://github.com/singaravellu/spring-petclinic.git'
+               git branch:"${params.branches}" ,url:'https://github.com/singaravellu/spring-petclinic.git'
 
                echo "$params.BRANCH"
         }
