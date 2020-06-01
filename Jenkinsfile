@@ -1,12 +1,25 @@
+
+properties([
+    parameters([
+        gitParameter(branch: '',
+                     branchFilter: 'origin/(.*)',
+                     defaultValue: 'master',
+                     description: 'please select which branch you want to build',
+                     name: 'BRANCH',
+                     quickFilterEnabled: false,
+                     selectedValue: 'NONE',
+                     sortMode: 'NONE',
+                     tagFilter: '*',
+                     type: 'PT_BRANCH')
+    ])
+])
+
 node {
-    parameters{ 
-        string (name:'Branch',defaultValue:'*/master',description:'please select the branch you want') 
-    }
     stage('checkout')
     {
-               git branch:params.Branch ,url:'https://github.com/singaravellu/spring-petclinic.git'
+               git branch:"${params.BRANCH}" ,url:'https://github.com/singaravellu/spring-petclinic.git'
 
-               echo "$params.Branch"
+               echo "$params.BRANCH"
         }
    
 }
