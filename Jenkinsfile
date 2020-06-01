@@ -4,7 +4,7 @@ node {
     }
     stage('checkout')
     {
-               git  branch:{parameters.Branch} ,url:'https://github.com/singaravellu/spring-petclinic.git'       
+               git  branch:[ parameters.Branch] ,url:'https://github.com/singaravellu/spring-petclinic.git'
         }
    
 }
