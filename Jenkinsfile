@@ -1,12 +1,13 @@
 #!/usr/bin/groovy
 
 
+    
+
+node {
     parameters{
         choice ( name: 'CHOICE' , choices: [ 'master' , 'something' ], description:'select your branch')
     }
 
-
-node {
     stage('checkout')
     {
                git branch:"${params.BRANCH}" ,url:'https://github.com/singaravellu/spring-petclinic.git'
