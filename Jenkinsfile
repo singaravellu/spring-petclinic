@@ -2,7 +2,7 @@
 
 
     parameters{
-        choice ( name: 'BRANCH' , choices: ['master','something'], description:'select your branch')
+        choice ( name: 'CHOICE' , choices: [ 'master' , 'something' ], description:'select your branch')
     }
 
 
