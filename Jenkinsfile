@@ -1,6 +1,6 @@
 node {
     parameters{ 
-        string (name:'Branch',defaultValue:'master',description:'please select the branch you want') 
+        string (name:'Branch',defaultValue:'*/master',description:'please select the branch you want') 
     }
     stage('checkout')
     {
