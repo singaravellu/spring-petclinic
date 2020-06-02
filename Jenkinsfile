@@ -17,6 +17,10 @@ node {
                  }
 
                echo "${params.branch}"
-               echo "${params.branches}"
+               for (element in branches) 
+               {
+                  echo "${params.branches}" 
+               }
+               
         }
 }
