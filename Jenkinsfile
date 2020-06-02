@@ -6,6 +6,6 @@ node {
     stage('checkout'){
                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/singaravellu/spring-petclinic.git']]]) 
 
-               echo "$params.brnach"
+               echo "${params.branch}"
         }
 }
