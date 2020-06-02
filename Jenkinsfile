@@ -1,13 +1,8 @@
 node {
-    // parameters{
-    //     choice ( name: 'CHOICE' , choices: [ 'master' , 'something' ], description:'select your branch')
+            properties([parameters([string(defaultValue: 'master', description: 'select branch you need', name: 'branch', trim: false)])])
+    // parameters{ 
+    //     string(name:'Branch',defaultValue:'master',description:'please select the branch you want') 
     // }
-
-    stage('checkout')
-    {
-               git branch:"${params.BRANCH}" ,url:'https://github.com/singaravellu/spring-petclinic.git'
-
-               echo "$params.branches"
+    stage('checkout'){
+               checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/singaravellu/spring-petclinic.git']]]) 
         }
-   
-}
