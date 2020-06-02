@@ -18,7 +18,7 @@ node {
                
                  echo "${params.branch}"
                  if (params.branch == 'master' && params.environments =='dev'){
-                    input message: "are you sure you want to build ${params.branch} in ${params.environments}", ok: 'yes ', submitter: approvalList , submitterParameter: 'approver'
+                    input message: "are you sure you want to build ${params.branch} in ${params.environments}", ok: 'yes ', submitter: approvalList[] , submitterParameter: 'approver'
                      cleanWs()
                     checkout([$class: 'GitSCM', branches: [[name: "${params.branch}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/singaravellu/spring-petclinic.git']]])
                  }
