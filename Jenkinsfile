@@ -20,7 +20,7 @@ node {
                  }
 
               // echo "${params.branch}"
-              echo 'GIT_COMMIT'
+              echo "${env.GIT_COMMIT}"
               
                for (element in branches) 
                {
