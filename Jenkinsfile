@@ -5,7 +5,12 @@ node {
     // }
     stage('checkout'){
                  echo "${params.branch}"
+                 if(params.branch == 'master'){
                checkout([$class: 'GitSCM', branches: [[name: "${params.branch}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/singaravellu/spring-petclinic.git']]]) 
+                 }
+                 else{
+                     echo "please select master branch"
+                 }
 
                echo "${params.branch}"
         }
