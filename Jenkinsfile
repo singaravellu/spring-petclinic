@@ -7,6 +7,7 @@ node {
     // parameters{ 
     //     string(name:'Branch',defaultValue:'master',description:'please select the branch you want') 
     // }
+     echo "{env.GIT_COMMIT}"
     stage('checkout'){
             //      echo "${params.branch}"
             //      if(params.branch == 'master'){
@@ -24,6 +25,6 @@ node {
             //    }
            
             checkout([$class: 'GitSCM', branches: [[name: 'commitId']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/singaravellu/spring-petclinic.git']]])
-             echo "${env.GIT_COMMIT}"   
+             echo "{env.GIT_COMMIT}"   
         }
 }
