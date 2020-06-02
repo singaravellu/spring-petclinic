@@ -1,5 +1,9 @@
 node {
-            properties([parameters([choice(choices: ['master', 'wavefront'], description: 'please select', name: 'branch')])])
+    
+            properties([parameters([
+                choice(choices: ['master', 'wavefront'], description: 'please select', name: 'branch'),
+                gitParameter(name:'git',type:'BRANCH',)
+                ])])
     // parameters{ 
     //     string(name:'Branch',defaultValue:'master',description:'please select the branch you want') 
     // }
@@ -13,5 +17,6 @@ node {
                  }
 
                echo "${params.branch}"
+               echo "${params.git}"
         }
 }
