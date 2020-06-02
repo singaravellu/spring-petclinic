@@ -27,7 +27,7 @@ node {
             //        echo "${element} "
             //    }
 
-            checkout([$class: 'GitSCM', branches: [[name: 'shortCommit']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/singaravellu/spring-petclinic.git']]])
+            checkout([$class: 'GitSCM', branches: [[name: 'commitId' ]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/singaravellu/spring-petclinic.git']]])
              echo "${env.GIT_COMMIT}"
         }
 }
