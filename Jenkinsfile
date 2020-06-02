@@ -16,10 +16,10 @@ node {
                      echo "please select master branch"
                  }
 
-               echo "${params.branch}"
+              // echo "${params.branch}"
                for (element in branches) 
                {
-                  echo "${element}" 
+                  echo "exceuting in for loop ${params.}" 
                }
                
         }
