@@ -22,7 +22,7 @@ node {
             //    {
             //       echo "${element} " 
             //    }
-            echo"{env.GIT_COMMIT}"
+            echo"{GIT_COMMIT}"
             checkout([$class: 'GitSCM', branches: [[name: 'commitId']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/singaravellu/spring-petclinic.git']]])
                
         }
