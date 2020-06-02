@@ -19,7 +19,7 @@ node {
               // echo "${params.branch}"
                for (element in branches) 
                {
-                  echo "exceuting in for loop ${params.}" 
+                  echo "exceuting in for loop ${params.branches} and branches:${branches} and element:${element}" 
                }
                
         }
