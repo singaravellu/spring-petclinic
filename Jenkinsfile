@@ -1,8 +1,3 @@
-#!/usr/bin/groovy
-
-
-    
-
 node {
     // parameters{
     //     choice ( name: 'CHOICE' , choices: [ 'master' , 'something' ], description:'select your branch')
