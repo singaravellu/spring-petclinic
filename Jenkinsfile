@@ -20,7 +20,7 @@ node {
               def list = [1,2,3,4];
                for (element in list) 
                {
-                  echo "${element} and ${list.size}" 
+                  echo "${element} " 
                }
                
         }
