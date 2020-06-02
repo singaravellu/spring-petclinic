@@ -8,6 +8,7 @@ node {
     //     string(name:'Branch',defaultValue:'master',description:'please select the branch you want') 
     // }
      echo "${env.GIT_COMMIT} and 'env.GIT_COMMIT' {env.GIT_COMMIT} "
+     GIT_COMMIT
     stage('checkout'){
             //      echo "${params.branch}"
             //      if(params.branch == 'master'){
