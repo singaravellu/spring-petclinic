@@ -22,7 +22,7 @@ node {
             //    {
             //       echo "${element} " 
             //    }
-            checkout([$class: 'GitSCM', branches: [[name: 'commitId']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[]]])
+            checkout([$class: 'GitSCM', branches: [[name: 'commitId']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/singaravellu/spring-petclinic.git']]])
                
         }
 }
