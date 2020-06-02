@@ -12,6 +12,7 @@ node {
     stage('checkout'){
                  echo "${params.branch}"
                  if(params.branch == 'master'){
+                     cleanWs()
                checkout([$class: 'GitSCM', branches: [[name: "${params.branch}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/singaravellu/spring-petclinic.git']]]) 
                  }
                  else{
@@ -19,6 +20,7 @@ node {
                  }
 
               // echo "${params.branch}"
+              echo 'GIT_COMMIT'
               
                for (element in branches) 
                {
