@@ -17,10 +17,10 @@ node {
                  }
 
               // echo "${params.branch}"
-              def newbranches=[1,2,3,4];
-               for (element in nwebranches) 
+              def list = [1,2,3,4];
+               for (element in list) 
                {
-                  echo "${element} and ${newbrnaches.size}" 
+                  echo "${element} and ${list.size}" 
                }
                
         }
