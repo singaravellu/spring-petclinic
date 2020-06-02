@@ -21,6 +21,12 @@ node {
                  else{
                      echo 'please select master branch'
                  }
+                 if(currentBuild.result=='SUCCESS'){
+                     echo "'${JOB_NAME}'"
+                 }
+                 else{
+                     echo  "Please go to ${BUILD_URL} and verify the build"
+                 }
 
               // echo "${params.branch}"
               shortCommit = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
