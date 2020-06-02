@@ -1,6 +1,7 @@
 #!/usr/bin/env groovy
 env.GIT_COMMIT
 echo "${env.GIT_COMMIT}"
+approvalList: venkatesh,vijay
 node {
     // def branches=[]
       properties([parameters([
@@ -13,9 +14,10 @@ node {
     //  echo "${env.GIT_COMMIT} and 'env.GIT_COMMIT' {env.GIT_COMMIT} "
     //  GIT_COMMIT
     stage('checkout'){
+               
                  echo "${params.branch}"
                  if (params.branch == 'master'){
-                    input message: 'are you sure you want to build "${params.branch}"', ok: 'yes ', submitter: 'venkatesh', submitterParameter: 'approver'
+                    input message: "are you sure you want to build ${params.branch}", ok: 'yes ', submitter: 'venkatesh', submitterParameter: 'approver'
                      cleanWs()
                     checkout([$class: 'GitSCM', branches: [[name: "${params.branch}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/singaravellu/spring-petclinic.git']]])
                  }
