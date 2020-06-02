@@ -1,3 +1,4 @@
+#!/usr/bin/env groovy
 node {
     def branches=[];
       properties([parameters([
@@ -20,7 +21,8 @@ node {
                  }
 
               // echo "${params.branch}"
-              echo "${env.GIT_COMMIT}"
+              shortCommit = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
+              echo "${shortCommit}"
               
                for (element in branches) 
                {
