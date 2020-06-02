@@ -1,5 +1,5 @@
 node {
-            properties([parameters([string(defaultValue: 'master', description: 'select branch you need', name: 'branch', trim: false)])])
+            properties([parameters([choice(choices: ['master', 'wavefront'], description: 'please select', name: 'branch')])])
     // parameters{ 
     //     string(name:'Branch',defaultValue:'master',description:'please select the branch you want') 
     // }
