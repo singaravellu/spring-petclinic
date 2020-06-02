@@ -15,6 +15,7 @@ node {
     stage('checkout'){
                  echo "${params.branch}"
                  if (params.branch == 'master'){
+                    input message: 'are you sure you want to build "${params.branch}"', ok: 'yes ? or no', submitter: 'venkatesh', submitterParameter: 'approver'
                      cleanWs()
                     checkout([$class: 'GitSCM', branches: [[name: "${params.branch}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/singaravellu/spring-petclinic.git']]])
                  }
@@ -39,6 +40,6 @@ node {
                  }
                  else{
                      echo "Job '${JOB_NAME}' (${BUILD_NUMBER}) is waiting for input"
-                     echo  "Please go to ${BUILD_URL} and  ${GIT_COMMIT} verify the build"
+                     echo  "Please go to ${BUILD_URL} and  verify the build"
                  }
 }
