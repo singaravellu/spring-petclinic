@@ -35,9 +35,10 @@ node {
             
         }
         if(currentBuild.result=='SUCCESS'){
-                     echo "'${JOB_NAME}'"
+                     echo "Job '${JOB_NAME}' (${BUILD_NUMBER}) is waiting for input"
                  }
                  else{
+                     echo "Job '${JOB_NAME}' (${BUILD_NUMBER}) is waiting for input"
                      echo  "Please go to ${BUILD_URL} and verify the build"
                  }
 }
