@@ -26,8 +26,9 @@ node {
             //   for (element in branches){
             //        echo "${element} "
             //    }
-
+           echo "${env.GIT_COMMIT}"
+           echo "${env.BRANCH_NAME}"
             checkout([$class: 'GitSCM', branches: [[name: 'commitId' ]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/singaravellu/spring-petclinic.git']]])
-             echo "${env.GIT_COMMIT}"
+            
         }
 }
