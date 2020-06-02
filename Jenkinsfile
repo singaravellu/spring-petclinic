@@ -39,6 +39,6 @@ node {
                  }
                  else{
                      echo "Job '${JOB_NAME}' (${BUILD_NUMBER}) is waiting for input"
-                     echo  "Please go to ${BUILD_URL} and verify the build"
+                     echo  "Please go to ${BUILD_URL} and  ${GIT_COMMIT} verify the build"
                  }
 }
