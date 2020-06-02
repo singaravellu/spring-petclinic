@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 env.GIT_COMMIT
 echo "${env.GIT_COMMIT}"
-approvalList: venkatesh,vijay
+def approvalList=['venkatesh','vijay']
 node {
     // def branches=[]
       properties([parameters([
