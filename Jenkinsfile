@@ -27,13 +27,14 @@ node {
         /* groovylint-disable-next-line DuplicateStringLiteral, SpaceAfterClosingBrace */
         if (params.branch == 'master' || params.environments == 'dev') {
             /* groovylint-disable-next-line LineLength, SpaceAroundMapEntryColon */
-            input message: "are you sure you want to build ${params.branch} in ${params.environments}", ok: 'yes ', submitter: 'approvalList[]' , submitterParameter: 'approver'
+         input message: "are you sure you want to build ${params.branch} in ${params.environments}", ok: 'yes', submitter: 'approvalList[]' , submitterParameter: 'approver'
             cleanWs()
             /* groovylint-disable-next-line LineLength */
             checkout([$class: 'GitSCM', branches: [[name: "${params.branch}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/singaravellu/spring-petclinic.git']]])
         }else {
             echo 'please select master branch'
         }
+        
         // echo "${params.branch}"
         shortCommit = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
         echo "${shortCommit}"
@@ -48,6 +49,11 @@ node {
     /* groovylint-disable-next-line SpaceAfterClosingBrace */
     if (currentBuild.result == 'SUCCESS') {
         sendEmail()
+        echo 'Sending a failure email'
+        subject = "build failed #${BUILD_NUMBER}"
+        body = "The build Failed while \"${message}\"...\n\nPlease goto ${env.BUILD_URL} for more information..."
+        /* groovylint-disable-next-line SpaceAroundMapEntryColon */
+        mail to: recepients, subject: subject, body: body
         echo "Job '${JOB_NAME}' (${BUILD_NUMBER}) is waiting for input"
         }else {
         //echo "Job '${JOB_NAME}' (${BUILD_NUMBER}) is waiting for input"
