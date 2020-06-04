@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 env.GIT_COMMIT
 echo "${env.GIT_COMMIT}"
-def approvalList[]=['venkatesh','vijay']
+def approvalList=['venkatesh','vijay']
 def recepients = 'venkateshsingaravelu95335@gmail.com'
 def subject = ''
 def body = ''
