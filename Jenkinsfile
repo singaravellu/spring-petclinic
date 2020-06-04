@@ -47,9 +47,9 @@ node {
     /* groovylint-disable-next-line LineLength */
     //     checkout([$class: 'GitSCM', branches: [[name: 'commitId' ]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/singaravellu/spring-petclinic.git']]])
     }
-    echo "RESULT: ${currentBuild.result}"
+    
     /* groovylint-disable-next-line SpaceAfterClosingBrace */
-    if (currentBuild.result == 'success') {
+    if (currentBuild.result == 'SUCCESS') {
         sendEmail()
         echo 'Sending a failure email'
         subject = "build failed #${BUILD_NUMBER}"
@@ -58,8 +58,9 @@ node {
         mail to: recepients, subject: subject, body: body
         echo "Job '${JOB_NAME}' (${BUILD_NUMBER}) is waiting for input"
         }else {
+            echo "RESULT: ${currentBuild.result}"
         //echo "Job '${JOB_NAME}' (${BUILD_NUMBER}) is waiting for input"
-        // echo  "Please go to ${BUILD_URL} and  verify the build"
+        echo  "Please go to ${BUILD_URL} and  verify the build"
     }
 }
 def sendEmail() {
