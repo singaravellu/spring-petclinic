@@ -34,7 +34,6 @@ node {
         }else {
             echo 'please select master branch'
         }
-        
         // echo "${params.branch}"
         shortCommit = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
         echo "${shortCommit}"
@@ -47,7 +46,7 @@ node {
     /* groovylint-disable-next-line LineLength */
     //     checkout([$class: 'GitSCM', branches: [[name: 'commitId' ]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/singaravellu/spring-petclinic.git']]])
     }
-    
+
     /* groovylint-disable-next-line SpaceAfterClosingBrace */
     if (currentBuild.currentResult == 'SUCCESS') {
         sendEmail()
@@ -58,11 +57,14 @@ node {
         // mail to: recepients, subject: subject, body: body
         // echo "Job '${JOB_NAME}' (${BUILD_NUMBER}) is waiting for input"
         }else {
-            echo "RESULT: ${currentBuild.currentResult}"
+        echo "RESULT: ${currentBuild.currentResult}"
         //echo "Job '${JOB_NAME}' (${BUILD_NUMBER}) is waiting for input"
         echo  "Please go to ${BUILD_URL} and  verify the build"
     }
+
 }
+}
+/* groovylint-disable-next-line NoDef */
 def sendEmail() {
     /* groovylint-disable-next-line SpaceAfterClosingBrace */
     if (currentBuild.result == 'FAILURE' ) {
