@@ -49,16 +49,16 @@ node {
     }
     
     /* groovylint-disable-next-line SpaceAfterClosingBrace */
-    if (currentBuild.result == 'SUCCESS') {
+    if (currentBuild.currentResult == 'SUCCESS') {
         sendEmail()
-        echo 'Sending a failure email'
-        subject = "build failed #${BUILD_NUMBER}"
-        body = "The build Failed while \"${message}\"...\n\nPlease goto ${env.BUILD_URL} for more information..."
-        /* groovylint-disable-next-line SpaceAroundMapEntryColon */
-        mail to: recepients, subject: subject, body: body
-        echo "Job '${JOB_NAME}' (${BUILD_NUMBER}) is waiting for input"
+        // echo 'Sending a failure email'
+        // subject = "build failed #${BUILD_NUMBER}"
+        // body = "The build Failed while \"${message}\"...\n\nPlease goto ${env.BUILD_URL} for more information..."
+        // /* groovylint-disable-next-line SpaceAroundMapEntryColon */
+        // mail to: recepients, subject: subject, body: body
+        // echo "Job '${JOB_NAME}' (${BUILD_NUMBER}) is waiting for input"
         }else {
-            echo "RESULT: ${currentBuild.result}"
+            echo "RESULT: ${currentBuild.currentResult}"
         //echo "Job '${JOB_NAME}' (${BUILD_NUMBER}) is waiting for input"
         echo  "Please go to ${BUILD_URL} and  verify the build"
     }
