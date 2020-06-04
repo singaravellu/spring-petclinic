@@ -1,7 +1,10 @@
 #!/usr/bin/env groovy
 env.GIT_COMMIT
 echo "${env.GIT_COMMIT}"
-def approvalList=['venkatesh','vijay']
+def approvalList[]=['venkatesh','vijay']
+def recepients = 'venkateshsingaravelu95335@gmail.com'
+def subject = ''
+def body = ''
 node {
     // def branches=[]
       properties([parameters([
@@ -43,19 +46,19 @@ node {
                      //echo "Job '${JOB_NAME}' (${BUILD_NUMBER}) is waiting for input"
                      echo  "Please go to ${BUILD_URL} and  verify the build"
                  }
-        def sendemail(){
-            def recepients = "venkateshsingaravelu95335@gmail.com"
-            def subject = ""
-            def body = ""
-            if("${buildStatus}"=="failure" ){
+}
+            def sendemail(){
+             if(currentBuild.result=='FAILURE' ){
         echo "Sending a failure email"
         subject = "build failed #${BUILD_NUMBER}"
         body = "The build Failed while \"${message}\"...\n\nPlease goto ${env.BUILD_URL} for more information..."
+        /* groovylint-disable-next-line SpaceAroundMapEntryColon */
         mail to: recepients, subject: subject, body: body
-    }
-    else if("${buildStatus}"=="success"){    
+    }else if(currentBuild.result=='SUCCESS'){    
         subject = "completed for Build #${BUILD_NUMBER}"
+        /* groovylint-disable-next-line LineLength */
         body = "Abuild #${BUILD_NUMBER} completed on branch ${BUILD_STREAM}.\n\nPlease goto ${env.BUILD_URL} for more information..."
+        /* groovylint-disable-next-line SpaceAroundMapEntryColon */
         mail to: recepients, subject: subject, body: body
     }
 }
