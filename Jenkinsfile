@@ -72,7 +72,7 @@ def sendEmail() {
         /* groovylint-disable-next-line SpaceAroundMapEntryColon */
         mail to: recepients, subject: subject, body: body
     }
-    elseif (currentBuild.result == 'SUCCESS') {
+    else (currentBuild.result == 'SUCCESS') {
         subject = "completed for Build #${BUILD_NUMBER}"
         /* groovylint-disable-next-line LineLength */
         body = "Abuild #${BUILD_NUMBER} completed on branch ${BUILD_STREAM}.\n\nPlease goto ${env.BUILD_URL} for more information..."
