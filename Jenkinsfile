@@ -92,5 +92,4 @@ def sendEmail(result) {
         /* groovylint-disable-next-line SpaceAroundMapEntryColon */
         to: 'venkateshsingaravelu95335@gmail.com'
     }
-    }
 }
