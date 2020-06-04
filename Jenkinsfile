@@ -47,6 +47,7 @@ node {
     /* groovylint-disable-next-line LineLength */
     //     checkout([$class: 'GitSCM', branches: [[name: 'commitId' ]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/singaravellu/spring-petclinic.git']]])
     }
+    echo "RESULT: ${currentBuild.result}"
     /* groovylint-disable-next-line SpaceAfterClosingBrace */
     if (currentBuild.result == 'success') {
         sendEmail()
