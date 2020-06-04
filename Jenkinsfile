@@ -51,11 +51,12 @@ node {
     if (currentBuild.currentResult == 'SUCCESS') {
        //sendEmail()
         echo 'Sending a failure email'
-        subject = "build failed #${BUILD_NUMBER}"
-        body = "The build Failed while \"${message}\"...\n\nPlease goto ${env.BUILD_URL} for more information..."
-        /* groovylint-disable-next-line SpaceAroundMapEntryColon */
-        mail to: recepients, subject: subject, body: body
-        echo "Job '${JOB_NAME}' (${BUILD_NUMBER}) is waiting for input"
+        mail bcc: '', body: 'Deployment of build #${BUILD_NUMBER} complete  on branch ${BRANCH_NAME}.\\n\\nPlease goto ${env.BUILD_URL} for more information..."', cc: '', from: '', replyTo: '', subject: 'Build and Deployment complete for ${BUILD_NUMBER}', to: 'venkateshsingaravelu95335@gmail.com'
+        // subject = "build failed #${BUILD_NUMBER}"
+        // body = "The build Failed while \"${message}\"...\n\nPlease goto ${env.BUILD_URL} for more information..."
+        // /* groovylint-disable-next-line SpaceAroundMapEntryColon */
+        // mail to: recepients, subject: subject, body: body
+        // echo "Job '${JOB_NAME}' (${BUILD_NUMBER}) is waiting for input"
         }else {
         echo "RESULT: ${currentBuild.currentResult}"
         //echo "Job '${JOB_NAME}' (${BUILD_NUMBER}) is waiting for input"
