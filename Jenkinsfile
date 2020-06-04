@@ -46,7 +46,6 @@ node {
                      //echo "Job '${JOB_NAME}' (${BUILD_NUMBER}) is waiting for input"
                      echo  "Please go to ${BUILD_URL} and  verify the build"
                  }
-}
             def sendemail(){
              if(currentBuild.result=='FAILURE' ){
         echo "Sending a failure email"
@@ -61,4 +60,5 @@ node {
         /* groovylint-disable-next-line SpaceAroundMapEntryColon */
         mail to: recepients, subject: subject, body: body
     }
+}
 }
