@@ -52,7 +52,7 @@ node {
        //sendEmail()
         echo 'Sending a failure email'
         mail bcc: '', 
-        body: "Deployment of build ${BUILD_NUMBER} complete  on branch ${BRANCH_NAME}.\\n\\nPlease goto ${env.BUILD_URL} for more information...", 
+        body: "Deployment of build ${BUILD_NUMBER} complete  on branch ${env.BRANCH_NAME}.\\n\\nPlease goto ${env.BUILD_URL} for more information...", 
         cc: '', 
         from: '', 
         replyTo: '', 
