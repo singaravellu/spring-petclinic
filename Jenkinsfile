@@ -3,6 +3,7 @@
 /* groovylint-disable-next-line CompileStatic */
 env.GIT_COMMIT
 echo "${env.GIT_COMMIT}"
+def result=''
 /* groovylint-disable-next-line NoDef, UnusedVariable, VariableTypeRequired */
 def approvalList = ['venkatesh', 'vijay']
 // def recepients = 'venkateshsingaravelu95335@gmail.com'
@@ -49,20 +50,16 @@ node {
 
     /* groovylint-disable-next-line SpaceAfterClosingBrace */
     if (currentBuild.currentResult == 'SUCCESS') {
-       //sendEmail()
-        echo 'Sending a failure email'
-        mail bcc: '', 
-        body: "Deployment of build ${BUILD_NUMBER} complete  on branch ${env.BRANCH_NAME}.\\n\\nPlease goto ${env.BUILD_URL} for more information...", 
-        cc: '', 
-        from: '', 
-        replyTo: '', 
-        subject: "Build and Deployment complete for ${BUILD_NUMBER}", 
-        to: 'venkateshsingaravelu95335@gmail.com'
-        // subject = "build failed #${BUILD_NUMBER}"
-        // body = "The build Failed while \"${message}\"...\n\nPlease goto ${env.BUILD_URL} for more information..."
-        // /* groovylint-disable-next-line SpaceAroundMapEntryColon */
-        // mail to: recepients, subject: subject, body: body
-        // echo "Job '${JOB_NAME}' (${BUILD_NUMBER}) is waiting for input"
+        result = "${currentBuild.currentResult}"
+       sendEmail(result)
+        // echo 'Sending a failure email'
+        // mail bcc: '', 
+        // body: "Deployment of build ${BUILD_NUMBER} complete  on branch ${env.BRANCH_NAME}.\\n\\nPlease goto ${env.BUILD_URL} for more information...", 
+        // cc: '', 
+        // from: '', 
+        // replyTo: '', 
+        // subject: "Build and Deployment complete for ${BUILD_NUMBER}", 
+        // to: 'venkateshsingaravelu95335@gmail.com'
         }else {
         echo "RESULT: ${currentBuild.currentResult}"
         //echo "Job '${JOB_NAME}' (${BUILD_NUMBER}) is waiting for input"
@@ -70,21 +67,30 @@ node {
     }
 
 }
-/* groovylint-disable-next-line NoDef */
-def sendEmail() {
+/* groovylint-disable-next-line MethodParameterTypeRequired, NoDef */
+def sendEmail(result) {
     /* groovylint-disable-next-line SpaceAfterClosingBrace */
-    if (currentBuild.result == 'FAILURE' ) {
+    if (result == 'FAILURE' ) {
         echo 'Sending a failure email'
-        subject = "build failed #${BUILD_NUMBER}"
-        body = "The build Failed while \"${message}\"...\n\nPlease goto ${env.BUILD_URL} for more information..."
+        mail bcc: '', 
+        body: "Deployment of build ${BUILD_NUMBER} complete  on branch ${BRANCH_NAME}.\\n\\nPlease goto ${env.BUILD_URL} for more information...",
+        cc: '', 
+        from: '', 
+        replyTo: '', 
+        subject: "Build and Deployment complete for ${BUILD_NUMBER}", 
         /* groovylint-disable-next-line SpaceAroundMapEntryColon */
-        mail to: recepients, subject: subject, body: body
+        to: 'venkateshsingaravelu95335@gmail.com'
     }
-    else (currentBuild.result == 'SUCCESS') {
-        subject = "completed for Build #${BUILD_NUMBER}"
-        /* groovylint-disable-next-line LineLength */
-        body = "Abuild #${BUILD_NUMBER} completed on branch ${BUILD_STREAM}.\n\nPlease goto ${env.BUILD_URL} for more information..."
+    else (result == 'SUCCESS') {
+       echo 'Sending a success email'
+        mail bcc: '', 
+        body: "Deployment of build ${BUILD_NUMBER} complete  on branch ${BRANCH_NAME}.\\n\\nPlease goto ${env.BUILD_URL} for more information...",
+        cc: '', 
+        from: '', 
+        replyTo: '', 
+        subject: "Build and Deployment complete for ${BUILD_NUMBER}", 
         /* groovylint-disable-next-line SpaceAroundMapEntryColon */
-        mail to: recepients, subject: subject, body: body
+        to: 'venkateshsingaravelu95335@gmail.com'
+    }
     }
 }
