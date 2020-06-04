@@ -47,7 +47,7 @@ node {
     //     checkout([$class: 'GitSCM', branches: [[name: 'commitId' ]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/singaravellu/spring-petclinic.git']]])
     }
     /* groovylint-disable-next-line SpaceAfterClosingBrace */
-    if (currentBuild.result == 'SUCCESS') {
+    if (currentBuild.result == 'success') {
         sendEmail()
         echo 'Sending a failure email'
         subject = "build failed #${BUILD_NUMBER}"
