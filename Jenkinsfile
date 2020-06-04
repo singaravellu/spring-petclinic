@@ -38,6 +38,7 @@ node {
         // echo "${params.branch}"
         shortCommit = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
         echo "${shortCommit}"
+        echo "RESULT: ${currentBuild.result}"
     //   for (element in branches){
     //        echo "${element} "
     //    }
